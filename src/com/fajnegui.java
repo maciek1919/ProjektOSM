@@ -375,7 +375,7 @@ public class fajnegui implements Runnable, ActionListener {
             RF.setSelected(!presenter.pacjentVectorList.get(Tabela.getSelectedRow()).getBoolPlec());
             CBUbezpieczenie.setSelectedIndex(presenter.pacjentVectorList.get(Tabela.getSelectedRow()).ubezpieczenieInt());
             BZapisz1.setText("Edytuj");
-           
+            czyszczenieBadania();
             wypisywanieBadania();	
           
         }
@@ -423,7 +423,6 @@ public class fajnegui implements Runnable, ActionListener {
         	}
         	
         
-        	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -445,13 +444,21 @@ public class fajnegui implements Runnable, ActionListener {
 		
 		if(source ==BZapisz1)
 		{
+			if(Tabela.getSelectionModel().isSelectionEmpty()) {
+				int zapis = Presenter.zapiszPacjenta(TFImie.getText(), TFNazwisko.getText(), TFPesel.getText(), RM.isSelected(), CBUbezpieczenie.getSelectedItem().toString(), Tabela);
+				if(zapis == 0) {
+					Wypisywanie();
+				}
+				return;
 			
-			Presenter.zapiszPacjenta(TFImie.getText(), TFNazwisko.getText(), TFPesel.getText(), RM.isSelected(), CBUbezpieczenie.getSelectedItem().toString(), Tabela);
-			presenter.clearTextFields(leftTop);
-			radioPanel.clearSelection();
-			CBUbezpieczenie.setSelectedIndex(-1);
-			czyszczeniePaneli();
-			
+			}
+			int edycja = presenter.edycjaPacjanta(TFImie.getText(), TFNazwisko.getText(), TFPesel.getText(), RM.isSelected(), String.valueOf(CBUbezpieczenie.getSelectedItem()), Tabela);
+     
+			if(edycja == 1) {
+        		BZapisz2.setText("Zapisz");
+        		czyszczeniePaneli();
+        		return;
+        	}
 		}
 		
 		if(source == BZapisz2)

@@ -128,14 +128,22 @@ public class Presenter {
 
 	  
 
-	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, JTable Tabela) {
+	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela) {
 		   int check = sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
 		   if(check == 0) {
+			   Pacjent pacjent = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);
+			   if(pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {
+				   Badanie badanie2 = pacjentVectorList.get(Tabela.getSelectedRow()).getWynikiBadan();
+				   pacjent.setBadanie(true);
+				  //pacjent.setBadanieEdit(badanie2);
+			   }
 			   
+			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent);
+			   tableUpdate(pacjentVectorList, Tabela);
+			   check = 1;
 		   }
 		return check;
-		   
+		 
 	   }
 	  
-
 }

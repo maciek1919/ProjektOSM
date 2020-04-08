@@ -59,10 +59,11 @@ public class Pacjent {
     public void setWynikiBadan(Date data, String sData, int lleukocytow, int lerytrocytow, int lneutrofili) {
     	
     	if(badanie) wynikiBadan.setBadanie(data, sData, lleukocytow, lerytrocytow, lneutrofili);
-    	else wynikiBadan = new Badanie(data, sData, lneutrofili, lleukocytow, lerytrocytow);
+    	else wynikiBadan = new Badanie(data, sData, lleukocytow, lerytrocytow, lneutrofili);
     }
 
     public void setBadanie(boolean badanie) {this.badanie = badanie;}
     
+    public void setBadanieEdit(Badanie bad2) {this.wynikiBadan = bad2;}
     
 }

@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Badanie {
 
-	private static int lleukocytow;
-	private static int lneutrofili;
-	private static int lerytrocytow;
+	private int lleukocytow;
+	private int lneutrofili;
+	private int lerytrocytow;
 	private String sData;
 	private Date data;
 	
@@ -38,11 +38,11 @@ public class Badanie {
 	
 	public Date getdata() {return data;}
 	
-	public static int getlneutrofili() {return lneutrofili;}
+	public  int getlneutrofili() {return lneutrofili;}
 
-	public static int getlleukocytow() {return lleukocytow;}
+	public  int getlleukocytow() {return lleukocytow;}
 	 
-	public static int getlerytrocytow() {return lerytrocytow;}
+	public  int getlerytrocytow() {return lerytrocytow;}
 	
 	
 }
