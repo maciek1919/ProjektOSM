@@ -1,4 +1,5 @@
 package com;
+
 import com.fajnegui;
 import java.awt.List;
 import java.util.Arrays;
@@ -12,6 +13,8 @@ import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.StringUtils;
 
 public class zabezpieczenia {
+	
+	
 
 	
 	public static int sprawdzBadanie(String lleukocytow, String lneutrofili, String lerytrocytow, JTable tabela, String sData, Date data) {
@@ -37,28 +40,29 @@ public class zabezpieczenia {
    }
 	
 	
-	   public static boolean liczbaplec(String pesel) {
-		  if(Arrays.asList(1,3,5,7,9).contains(Integer.parseInt(String.valueOf(pesel.charAt(2))))) {
+	   public static boolean liczbaM(String pesel) {
+		  if(Arrays.asList(1,3,5,7,9).contains(Integer.parseInt(String.valueOf(pesel.charAt(9))))) {
 			  return true;
 		  }
 		  else {return false;}
 	   }
 	   
 		   
-	   public static int sprawdzPesel(String pesel) {
+	   public static int sprawdzPesel(String pesel, boolean isMale){
 		   if(pesel.matches("[0-9]+") && pesel.length() == 11 && secondTwo(pesel) == true) {
-		/*	  
-			//if(P && liczbaplec(pesel) == true) {
-				   return 1;
+			 
+			
+			if(isMale && liczbaM(pesel)) {
+				   return 0;
 				   
 			   }
-			 //  else if(liczbaplec(pesel) == false)
-			//	   return 1;
+			  else if(!isMale && !liczbaM(pesel))
+				   return 0;
 		   }
-		 //  else {
-			//   return 0;
-		  // }*/
-		return 0;
+		   else {
+		   return 1;
+		   }
+		return 1;
 		   
 		   
 	   }

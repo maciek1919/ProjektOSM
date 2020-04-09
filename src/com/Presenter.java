@@ -63,15 +63,16 @@ public class Presenter {
 	   
 	   public static int zapiszPacjenta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela){
 	        int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
-	        int checkPesel = zabezpieczenia.sprawdzPesel(pesel);
-	        if(check == 0){
-	        	if(checkPesel == 1) {
+	        
+	        int checkPesel = zabezpieczenia.sprawdzPesel(pesel, plec);
+	        if(check == 0 && checkPesel == 0){
+	        	
 	            Pacjent pacjent = new Pacjent(imie, nazwisko, pesel, plec, ubezpieczenie);
 	            pacjentVectorList.add(pacjent);
 	            tableUpdate(pacjentVectorList, Tabela);
 	            ListSelectionModel selectionModel = Tabela.getSelectionModel();
 	            selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
-	        	}
+	        	
 	        }
 	        return check;
 	    }
@@ -124,7 +125,8 @@ public class Presenter {
 
 	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela) {
 		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
-		   if(check == 0) {
+		   int checkPesel = zabezpieczenia.sprawdzPesel(pesel, plec);
+		   if(check == 0 && checkPesel == 0) {
 			   Pacjent pacjent1 = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);
 			   if(pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {
 				   Badanie badanie2 = pacjentVectorList.get(Tabela.getSelectedRow()).getWynikiBadan();
