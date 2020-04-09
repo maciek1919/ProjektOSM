@@ -2,6 +2,8 @@ package com;
 
 import java.awt.*;
 import java.util.Vector;
+
+import org.apache.commons.lang3.Range;
 import org.apache.commons.lang3.StringUtils;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -52,30 +54,24 @@ public class Presenter {
 				  }
 				}
 		      
-		      
+				
 		  }
-	  
-	   public static int sprawdzPacjenta(String imie, String nazwisko, String pesel, JTable Tabela) {
-		   if(StringUtils.isEmpty(pesel)||StringUtils.isEmpty(imie)||StringUtils.isEmpty(nazwisko))return 1;
-		   else 
-			   return 0;
-			   
-	   }
 	   
-	   public static int sprawdzBadanie(String lleukocytow, String lneutrofili, String lerytrocytow, JTable tabela, String sData, Date data) {
-		if(StringUtils.isEmpty(lerytrocytow)||StringUtils.isEmpty(lneutrofili)||StringUtils.isEmpty(lerytrocytow)||StringUtils.isEmpty(sData))return 1;
-		else
-			return 0;
-	}
+	   
+	   
+	  
 	   
 	   public static int zapiszPacjenta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela){
-	        int check = sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
+	        int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
+	        int checkPesel = zabezpieczenia.sprawdzPesel(pesel);
 	        if(check == 0){
+	        	if(checkPesel == 1) {
 	            Pacjent pacjent = new Pacjent(imie, nazwisko, pesel, plec, ubezpieczenie);
 	            pacjentVectorList.add(pacjent);
 	            tableUpdate(pacjentVectorList, Tabela);
 	            ListSelectionModel selectionModel = Tabela.getSelectionModel();
 	            selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
+	        	}
 	        }
 	        return check;
 	    }
@@ -94,9 +90,9 @@ public class Presenter {
 	   }
 	   
 	   public static int zapiszBadanie(String lleukocytow, String lerytrocytow, String lneutrofili, Date data, JTable Tabela, String sData) {
-		   int check = sprawdzBadanie(lleukocytow, lneutrofili, lerytrocytow, Tabela,sData, data);
+		   int check = zabezpieczenia.sprawdzBadanie(lleukocytow, lneutrofili, lerytrocytow, Tabela,sData, data);
 		   if(check == 0) {
-			   pacjentVectorList.get(Tabela.getSelectedRow()).setWynikiBadan(data, sData, Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow), Integer.parseInt(lleukocytow));
+			   pacjentVectorList.get(Tabela.getSelectedRow()).setWynikiBadan(data, sData, Integer.parseInt(lleukocytow), Integer.parseInt(lerytrocytow), Integer.parseInt(lneutrofili));
 	           pacjentVectorList.get(Tabela.getSelectedRow()).setBadanie(true);
 			   tableUpdate(pacjentVectorList,Tabela);
 			   return 0;
@@ -117,7 +113,7 @@ public class Presenter {
 	public static boolean isPozytywny(int lleukocytow, int lerytrocytow, int lneutrofili) {
 		boolean pozytywny = false;
 		
-		if(lleukocytow > 100 || lerytrocytow > 100 || lneutrofili > 100) {
+		if(lleukocytow > 100 && lerytrocytow > 100 && lneutrofili < 100) {
 			pozytywny = true;
 			
 		}
@@ -126,19 +122,17 @@ public class Presenter {
 		
 	}
 
-	  
-
 	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela) {
-		   int check = sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
+		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
 		   if(check == 0) {
-			   Pacjent pacjent = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);
+			   Pacjent pacjent1 = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);
 			   if(pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {
 				   Badanie badanie2 = pacjentVectorList.get(Tabela.getSelectedRow()).getWynikiBadan();
-				   pacjent.setBadanie(true);
-				  //pacjent.setBadanieEdit(badanie2);
+				   pacjent1.setBadanie(true);
+				   pacjent1.setBadanieEdit(badanie2);
 			   }
 			   
-			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent);
+			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent1);
 			   tableUpdate(pacjentVectorList, Tabela);
 			   check = 1;
 		   }

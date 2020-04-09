@@ -47,7 +47,8 @@ public class fajnegui implements Runnable, ActionListener {
 	private JMenuItem mZamknij;
 	private JLabel lImie,lNazwisko, lPesel, lPlec, lUbezpieczenie, lDanePacjenta, lData, lBadanie, lneutrofili, lleukocytow, lerytrocytow,lwynik, lwynik1;
 	private JTextField TFImie, TFNazwisko, TFPesel, TFneutrofili, TFleukocytow, TFerytrocytow;
-	private JRadioButton RF, RM;
+	private JRadioButton RF;
+	private JRadioButton RM;
 	private static JRadioButton RP, RN;
 	private ButtonGroup radioPanel, radioPanel1;
 	private JComboBox CBUbezpieczenie;
@@ -66,7 +67,7 @@ public class fajnegui implements Runnable, ActionListener {
     public void run() {
         JFrame frame = new JFrame("OSM");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        presenter = new Presenter();
         JPanel mainPanel = new JPanel();
         mainPanel.add(createLeftPanel());
         mainPanel.add(createRightPanel());
@@ -314,6 +315,8 @@ public class fajnegui implements Runnable, ActionListener {
         Tabela.setModel(defaultTableModel);
         Tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Tabela.getSelectionModel().addListSelectionListener(e -> Wypisywanie() );
+        Tabela.getTableHeader().setReorderingAllowed(false); 
+        Tabela.getTableHeader().setResizingAllowed(false);
         
         JScrollPane scrollPane = new JScrollPane(Tabela, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         panel.add(scrollPane);
@@ -423,6 +426,7 @@ public class fajnegui implements Runnable, ActionListener {
         	}
         	
         
+        	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -470,7 +474,6 @@ public class fajnegui implements Runnable, ActionListener {
 				czyszczeniePaneli();
 			}
 		}
-		
 		
 	}
 	

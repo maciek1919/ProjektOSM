@@ -7,10 +7,12 @@ public class Pacjent {
 	private String imie;
 	private String nazwisko;
 	private String pesel;
-	private String plec;
+	private  String plec; 
 	private String ubezpieczenie;
 	private Boolean badanie;
 	private Badanie wynikiBadan;
+	
+	
 	
 	Pacjent(String imie, String nazwisko, String pesel, Boolean plec, String ubezpieczenie){
 		this.imie = imie;	
@@ -25,9 +27,9 @@ public class Pacjent {
         return new Object[]{getImie()+" "+getNazwisko(),getPlec(),getPesel(),getUbezpieczenie(),isBadanie()};
     }
 
-    public Boolean getBoolPlec(){
+    public  Boolean getBoolPlec(){
         Boolean boolPlec;
-        boolPlec = this.plec.equals("M");
+        boolPlec = plec.equals("M");
         return boolPlec;
     }
 
@@ -47,7 +49,7 @@ public class Pacjent {
 
     public String getNazwisko() { return nazwisko;}
 
-    private String getPlec() { return plec; }
+    public String getPlec() { return plec; }
 
     public String getPesel() { return pesel; }
 
