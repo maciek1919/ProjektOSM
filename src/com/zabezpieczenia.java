@@ -19,15 +19,22 @@ public class zabezpieczenia {
 	
 	public static int sprawdzBadanie(String lleukocytow, String lneutrofili, String lerytrocytow, JTable tabela, String sData, Date data) {
 		if(StringUtils.isEmpty(lerytrocytow)||StringUtils.isEmpty(lneutrofili)||StringUtils.isEmpty(lerytrocytow)||StringUtils.isEmpty(sData))return 1;
+		if(!lleukocytow.matches("[0-9]+") || !lneutrofili.matches("[0-9]+") || !lerytrocytow.matches("[0-9]+"))return 2;
 		else
 			return 0;
 	}
 	
 	public static int sprawdzPacjenta(String imie, String nazwisko, String pesel, JTable Tabela) {
 		   if(StringUtils.isEmpty(pesel)||StringUtils.isEmpty(imie)||StringUtils.isEmpty(nazwisko))return 1;
-		   else 
-			   return 0;
-			   
+		   if(!StringUtils.isAlpha(imie) || (!StringUtils.isAlpha(nazwisko))) return 2;
+		  
+		   for (Pacjent pacjentVectorList1 : Presenter.pacjentVectorList) { //pêtla foreach
+			   if(pacjentVectorList1.getPesel().equals(pesel)) {
+				   return 3;
+			   }
+			 
+		   }
+		   return 0;		   
 	   }
 	
 	public static boolean secondTwo(String pesel) {
@@ -67,4 +74,9 @@ public class zabezpieczenia {
 		   
 	   }
 	
-}
+	  
+
+	   }
+	  
+	   
+
