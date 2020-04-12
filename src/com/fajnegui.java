@@ -102,11 +102,11 @@ public class fajnegui implements Runnable, ActionListener {
 		
         leftTop.setLayout(null);
 		
-		lImie = new JLabel("ImiÄ™:");
+		lImie = new JLabel("Imiê");
 		lImie.setBounds(20,60,100,20);
 		leftTop.add(lImie);
 		
-		TFImie = new JTextField("");
+		TFImie = new JTextField();
 		TFImie.setBounds(150, 60, 150, 20);
 		leftTop.add(TFImie);
 		
@@ -118,14 +118,14 @@ public class fajnegui implements Runnable, ActionListener {
 		lPesel.setBounds(20, 120, 100, 20);
 		leftTop.add(lPesel);
 		
-		lPlec = new JLabel("PÅ‚eÄ‡");
+		lPlec = new JLabel("P³eæ");
 		lPlec.setBounds(20,150,100,20);
 		leftTop.add(lPlec);
 		
 		radioPanel = new ButtonGroup();	
 		
 		RF = new JRadioButton("Kobieta", false);
-		RM = new JRadioButton("MÄ™Å¼czyzna", false);
+		RM = new JRadioButton("Mê¿czyzna", false);
 		RF.setBounds(150, 150, 90, 20);
 		RM.setBounds(250, 150, 90, 20);
 		radioPanel.add(RF);
@@ -320,7 +320,7 @@ public class fajnegui implements Runnable, ActionListener {
         
         JScrollPane scrollPane = new JScrollPane(Tabela, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         panel.add(scrollPane);
-        
+        																																																																																																																																																																																																																																																																																																																																																																																																																														
 
 		TableColumn column = null;
 		for (int i = 0; i < 5; i++) {
@@ -347,7 +347,7 @@ public class fajnegui implements Runnable, ActionListener {
 			BZapisz1.setText("Zapisz");
 		});
 		
-		BUsun = new JButton("UsuÅ„");
+		BUsun = new JButton("Usuñ");
 		przyciskPanel.add(BDodaj);
 		przyciskPanel.add(BUsun);
 		przyciskPanel.setPreferredSize(new Dimension(20,20));

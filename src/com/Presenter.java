@@ -96,6 +96,7 @@ public class Presenter {
 			   pacjentVectorList.get(Tabela.getSelectedRow()).setWynikiBadan(data, sData, Integer.parseInt(lleukocytow), Integer.parseInt(lerytrocytow), Integer.parseInt(lneutrofili));
 	           pacjentVectorList.get(Tabela.getSelectedRow()).setBadanie(true);
 			   tableUpdate(pacjentVectorList,Tabela);
+			   JOptionPane.showMessageDialog(null,"Badanie dodano pomyœlnie");
 			   return 0;
 		   }
 		   else {
@@ -107,6 +108,7 @@ public class Presenter {
 	   public static int usuwaniePacjenta(int index, JTable Tabela) {
 		 pacjentVectorList.remove(index);
 		 tableUpdate(pacjentVectorList, Tabela);
+		 
 		 return 1;
 		   
 	   }
@@ -125,21 +127,27 @@ public class Presenter {
 
 	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela) {
 		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
+		
 		   int checkPesel = zabezpieczenia.sprawdzPesel(pesel, plec);
-		   if(check == 0 && checkPesel == 0) {
-			   Pacjent pacjent1 = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);
-			   if(pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {
-				   Badanie badanie2 = pacjentVectorList.get(Tabela.getSelectedRow()).getWynikiBadan();
-				   pacjent1.setBadanie(true);
-				   pacjent1.setBadanieEdit(badanie2);
-			   }
+		   if(check == 0 || check == 5 && checkPesel == 0) {
 			   
-			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent1);
+			   Pacjent pacjent = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);			   
+			   if(pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {
+				   Badanie badanie = pacjentVectorList.get(Tabela.getSelectedRow()).getWynikiBadan();
+				   pacjent.setBadanie(true);
+				   pacjent.setBadanieEdit(badanie);
+			   }
+			  
+			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent);
 			   tableUpdate(pacjentVectorList, Tabela);
 			   check = 1;
+			   
 		   }
 		return check;
 		 
 	   }
+	   
+	  
+	  
 	  
 }
