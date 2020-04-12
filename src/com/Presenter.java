@@ -62,10 +62,10 @@ public class Presenter {
 	  
 	   
 	   public static int zapiszPacjenta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela){
-	        int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
+	        int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela, plec);
 	        
-	        int checkPesel = zabezpieczenia.sprawdzPesel(pesel, plec);
-	        if(check == 0 && checkPesel == 0){
+	        
+	        if(check == 0 ){
 	        	
 	            Pacjent pacjent = new Pacjent(imie, nazwisko, pesel, plec, ubezpieczenie);
 	            pacjentVectorList.add(pacjent);
@@ -74,6 +74,7 @@ public class Presenter {
 	            selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
 	        	
 	        }
+	        zabezpieczenia.errorMessage(check);
 	        return check;
 	    }
 	   
@@ -96,7 +97,7 @@ public class Presenter {
 			   pacjentVectorList.get(Tabela.getSelectedRow()).setWynikiBadan(data, sData, Integer.parseInt(lleukocytow), Integer.parseInt(lerytrocytow), Integer.parseInt(lneutrofili));
 	           pacjentVectorList.get(Tabela.getSelectedRow()).setBadanie(true);
 			   tableUpdate(pacjentVectorList,Tabela);
-			   JOptionPane.showMessageDialog(null,"Badanie dodano pomyœlnie");
+			   
 			   return 0;
 		   }
 		   else {
@@ -126,10 +127,12 @@ public class Presenter {
 	}
 
 	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela) {
-		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela);
-		
-		   int checkPesel = zabezpieczenia.sprawdzPesel(pesel, plec);
-		   if(check == 0 || check == 5 && checkPesel == 0) {
+		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela, plec);
+
+		   if(check == 4) {
+			   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym samym numer pesel");
+		   }
+		   if(check == 0 || check == 5) {
 			   
 			   Pacjent pacjent = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);			   
 			   if(pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {

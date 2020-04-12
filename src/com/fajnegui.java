@@ -387,7 +387,8 @@ public class fajnegui implements Runnable, ActionListener {
         	BUsun.setEnabled(true);
         };
        
-      
+        
+        
         	private void wypisywanieBadania() {
         		if(presenter.pacjentVectorList.get(Tabela.getSelectedRow()).isBadanie()) {
         			
@@ -449,6 +450,13 @@ public class fajnegui implements Runnable, ActionListener {
 		if(source ==BZapisz1)
 		{
 			if(Tabela.getSelectionModel().isSelectionEmpty()) {
+				if(CBUbezpieczenie.getSelectedIndex() == -1) {
+					JOptionPane.showMessageDialog(null, "Brak wybranego ubezpieczenia");
+				}
+			if(!RM.isSelected() && !RF.isSelected())
+			{
+				JOptionPane.showMessageDialog(null, "Brak zaznaczonej p³ci");
+			}
 				int zapis = Presenter.zapiszPacjenta(TFImie.getText(), TFNazwisko.getText(), TFPesel.getText(), RM.isSelected(), CBUbezpieczenie.getSelectedItem().toString(), Tabela);
 				if(zapis == 0) {
 					Wypisywanie();
