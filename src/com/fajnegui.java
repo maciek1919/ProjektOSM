@@ -175,7 +175,7 @@ public class fajnegui implements Runnable, ActionListener {
         lData.setBounds(20, 45, 100, 20);
         leftBottom.add(lData);
         
-        lleukocytow = new JLabel("Liczba leukocytÃ³w: ");
+        lleukocytow = new JLabel("Liczba leukocytóww: ");
         lleukocytow.setBounds(20, 90, 150, 20);
         leftBottom.add(lleukocytow);
         
@@ -183,7 +183,7 @@ public class fajnegui implements Runnable, ActionListener {
         lneutrofili.setBounds(20, 120, 150, 20);
         leftBottom.add(lneutrofili);
         
-        lerytrocytow = new JLabel("Liczba erytrocytÃ³w:");
+        lerytrocytow = new JLabel("Liczba erytrocytów:");
         lerytrocytow.setBounds(20, 150, 150, 20);
         leftBottom.add(lerytrocytow);
         
