@@ -74,6 +74,7 @@ public class Presenter {
 	            selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
 	        	
 	        }
+	        
 	        zabezpieczenia.errorMessage(check);
 	        return check;
 	    }
@@ -130,7 +131,7 @@ public class Presenter {
 		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela, plec);
 
 		   if(check == 4) {
-			   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym samym numer pesel");
+			   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym samym numer pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 		   }
 		   if(check == 0 || check == 5) {
 			   

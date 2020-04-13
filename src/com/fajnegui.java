@@ -263,9 +263,9 @@ public class fajnegui implements Runnable, ActionListener {
 						if(!wynik) {
 						lwynik1.setText("Negatywny");
 						}
-						else {lwynik1.setText("Pozytywny");}
-							
+						else {lwynik1.setText("Pozytywny");}				
 						}
+					else {lwynik1.setText("Brak danych");}
 				}
 				
 				
@@ -354,15 +354,17 @@ public class fajnegui implements Runnable, ActionListener {
         panel.add(przyciskPanel);
         
         BUsun.setEnabled(false);
+        
         BUsun.addActionListener(e -> {presenter.usuwaniePacjenta(Tabela.getSelectedRow() ,Tabela);
         czyszczeniePaneli();
-    
+        BUsun.setEnabled(false);
         });
   
 		return panel;
 		
 }
- 
+    
+    	
 
     	private void Wypisywanie(){
         if(!Tabela.getSelectionModel().isSelectionEmpty()) { //when row selected
@@ -384,7 +386,7 @@ public class fajnegui implements Runnable, ActionListener {
         }
         else 
         	
-        	BUsun.setEnabled(true);
+        	BUsun.setEnabled(false);
         };
        
         
@@ -424,6 +426,8 @@ public class fajnegui implements Runnable, ActionListener {
         		czyszczeniePacjenta();
         		czyszczenieBadania();
         		datePicker.getComponent(1).setEnabled(false); 		
+        		
+  	        	
         	}
         	
         
