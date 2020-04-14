@@ -437,18 +437,28 @@ public class fajnegui implements Runnable, ActionListener {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
 		if(source == mZamknij)
-		{
+		{	
 			System.exit(0);
 		}
 		
 		if(source == BAnuluj1)
 		{
-			czyszczeniePaneli();
+			czyszczeniePacjenta();
+			if(BZapisz1.getText()=="Edytuj") {
+				czyszczeniePaneli();
+				Tabela.getSelectionModel().clearSelection();
+			}
+		
 		}
 		
 		if(source == BAnuluj2)
 		{
-			czyszczeniePaneli();
+			czyszczenieBadania();
+			if(BZapisz2.getText()=="Edytuj") {
+				czyszczeniePaneli();
+				Tabela.getSelectionModel().clearSelection();
+			}
+			
 		}
 		
 		if(source ==BZapisz1)
@@ -472,7 +482,7 @@ public class fajnegui implements Runnable, ActionListener {
      
 			if(edycja == 1) {
         		BZapisz2.setText("Zapisz");
-        		czyszczeniePaneli();
+        		//czyszczeniePaneli();
         		return;
         	}
 		}
@@ -482,8 +492,8 @@ public class fajnegui implements Runnable, ActionListener {
 			int checkValue;
 			checkValue = presenter.zapiszBadanie(TFleukocytow.getText(), TFerytrocytow.getText(), TFneutrofili.getText(), (Date) datePicker.getModel().getValue(),Tabela, datePicker.getJFormattedTextField().getText());
 			if (checkValue == 0) {
-				presenter.clearTextFields(leftBottom);
-				czyszczeniePaneli();
+				wypisywanieBadania();
+				BZapisz2.setText("Edytuj");
 			}
 		}
 		

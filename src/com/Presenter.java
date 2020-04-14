@@ -62,7 +62,9 @@ public class Presenter {
 	  
 	   
 	   public static int zapiszPacjenta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela){
-	        int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela, plec);
+	        
+		   
+		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela, plec);
 	        
 	        
 	        if(check == 0 ){
@@ -74,6 +76,10 @@ public class Presenter {
 	            selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
 	        	
 	        }
+	        if(StringUtils.isEmpty(imie) || StringUtils.isEmpty(nazwisko) || StringUtils.isEmpty(pesel)||StringUtils.isEmpty(ubezpieczenie))
+		       {
+		    	   check = 1;
+		       }
 	        
 	        zabezpieczenia.errorMessage(check);
 	        return check;
@@ -98,6 +104,8 @@ public class Presenter {
 			   pacjentVectorList.get(Tabela.getSelectedRow()).setWynikiBadan(data, sData, Integer.parseInt(lleukocytow), Integer.parseInt(lerytrocytow), Integer.parseInt(lneutrofili));
 	           pacjentVectorList.get(Tabela.getSelectedRow()).setBadanie(true);
 			   tableUpdate(pacjentVectorList,Tabela);
+			   ListSelectionModel selectionModel = Tabela.getSelectionModel();
+	           selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
 			   
 			   return 0;
 		   }
@@ -144,9 +152,12 @@ public class Presenter {
 			  
 			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent);
 			   tableUpdate(pacjentVectorList, Tabela);
-			   check = 1;
+			   ListSelectionModel selectionModel = Tabela.getSelectionModel();
+	           selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
 			   
+			   check = 0;		   
 		   }
+		zabezpieczenia.errorMessage(check);
 		return check;
 		 
 	   }
