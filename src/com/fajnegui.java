@@ -463,28 +463,31 @@ public class fajnegui implements Runnable, ActionListener {
 		
 		if(source ==BZapisz1)
 		{
+			
 			if(Tabela.getSelectionModel().isSelectionEmpty()) {
-				if(CBUbezpieczenie.getSelectedIndex() == -1) {
-					JOptionPane.showMessageDialog(null, "Brak wybranego ubezpieczenia");
+				if(CBUbezpieczenie.getSelectedIndex() == -1 ||!RM.isSelected() && !RF.isSelected()) {
+					zabezpieczenia.errorMessage(1);
+					
 				}
-			if(!RM.isSelected() && !RF.isSelected())
-			{
-				JOptionPane.showMessageDialog(null, "Brak zaznaczonej p³ci");
-			}
+				else {
 				int zapis = Presenter.zapiszPacjenta(TFImie.getText(), TFNazwisko.getText(), TFPesel.getText(), RM.isSelected(), CBUbezpieczenie.getSelectedItem().toString(), Tabela);
 				if(zapis == 0) {
 					Wypisywanie();
 				}
 				return;
 			
+				}
 			}
+			
+			
+			else {
 			int edycja = presenter.edycjaPacjanta(TFImie.getText(), TFNazwisko.getText(), TFPesel.getText(), RM.isSelected(), String.valueOf(CBUbezpieczenie.getSelectedItem()), Tabela);
-     
 			if(edycja == 1) {
         		BZapisz2.setText("Zapisz");
         		//czyszczeniePaneli();
         		return;
         	}
+			}
 		}
 		
 		if(source == BZapisz2)

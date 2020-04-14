@@ -99,9 +99,7 @@ public class zabezpieczenia {
 	    }
 
 	   public static void errorMessage(int check) {
-		   if(check == 0) {
-			   
-		   }
+		   
 		   if(check == 1) {
 	        	 JOptionPane.showMessageDialog(null, "Puste pola pacjenta");
 	        }

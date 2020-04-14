@@ -76,10 +76,6 @@ public class Presenter {
 	            selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
 	        	
 	        }
-	        if(StringUtils.isEmpty(imie) || StringUtils.isEmpty(nazwisko) || StringUtils.isEmpty(pesel)||StringUtils.isEmpty(ubezpieczenie))
-		       {
-		    	   check = 1;
-		       }
 	        
 	        zabezpieczenia.errorMessage(check);
 	        return check;
@@ -152,9 +148,6 @@ public class Presenter {
 			  
 			   pacjentVectorList.set(Tabela.getSelectedRow(), pacjent);
 			   tableUpdate(pacjentVectorList, Tabela);
-			   ListSelectionModel selectionModel = Tabela.getSelectionModel();
-	           selectionModel.setSelectionInterval(pacjentVectorList.size()-1, pacjentVectorList.size()-1);
-			   
 			   check = 0;		   
 		   }
 		zabezpieczenia.errorMessage(check);
