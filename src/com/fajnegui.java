@@ -204,7 +204,7 @@ public class fajnegui implements Runnable, ActionListener {
         leftBottom.add(lwynik);
         
         lwynik1 = new JLabel("");
-        lwynik1.setBounds(200,180,100,20);
+        lwynik1.setBounds(200,180,150,20);
         leftBottom.add(lwynik1);
         
         radioPanel1 = new ButtonGroup();	
@@ -238,7 +238,7 @@ public class fajnegui implements Runnable, ActionListener {
 		leftBottom.add(datePicker);
 		
 		
-		 TFerytrocytow.getDocument().addDocumentListener(new DocumentListener() {
+				TFerytrocytow.getDocument().addDocumentListener(new DocumentListener() {
 				
 				
 				@Override
@@ -259,19 +259,24 @@ public class fajnegui implements Runnable, ActionListener {
 				private void sprawdzenie(String lleukocytow, String lneutrofili, String lerytrocytow) {
 					
 					if(!StringUtils.isEmpty(lleukocytow) && !StringUtils.isEmpty(lneutrofili) && !StringUtils.isEmpty(lerytrocytow)) {
-						boolean wynik = presenter.isPozytywny(Integer.parseInt(lleukocytow), Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow));
-						if(!wynik) {
-						lwynik1.setText("Negatywny");
+						if(TFleukocytow.getText().matches("[0-9]+") && TFneutrofili.getText().matches("[0-9]+") && TFerytrocytow.getText().matches("[0-9]+") ) {
+							boolean wynik = presenter.isPozytywny(Integer.parseInt(lleukocytow), Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow));
+							if(!wynik) {
+								lwynik1.setText("Negatywny");
+							}
+							else {lwynik1.setText("Pozytywny");}				
 						}
-						else {lwynik1.setText("Pozytywny");}				
-						}
+						else {lwynik1.setText("Z³y format badania");}
+
+					}
 					else {lwynik1.setText("Brak danych");}
 				}
 				
 				
+				
 			});
-			
-			
+		
+				
 			panel.add(leftBottom, BorderLayout.SOUTH);
 			presenter.setPanelEdit(leftBottom, false);
 			datePicker.getComponent(1).setEnabled(false); 

@@ -21,12 +21,12 @@ public class zabezpieczenia {
 	public static int sprawdzBadanie(String lleukocytow, String lneutrofili, String lerytrocytow, JTable tabela, String sData, Date data) {
 		if(StringUtils.isEmpty(lerytrocytow)||StringUtils.isEmpty(lneutrofili)||StringUtils.isEmpty(lerytrocytow)||StringUtils.isEmpty(sData)) {
 			
-			JOptionPane.showMessageDialog(null, "Puste wyniki badan lub nie wpisana data");
+			JOptionPane.showMessageDialog(null, "Puste wyniki badan lub nie wpisana data", "Warning", JOptionPane.WARNING_MESSAGE);
 			return 1;
 		}
 		
 		if(!lleukocytow.matches("[0-9]+") || !lneutrofili.matches("[0-9]+") || !lerytrocytow.matches("[0-9]+")) {
-			JOptionPane.showMessageDialog(null, "Zly format wyników badañ");
+			JOptionPane.showMessageDialog(null, "Zly format wyników badañ", "Warning", JOptionPane.WARNING_MESSAGE);
 			return 2;
 		}
 		
@@ -101,24 +101,24 @@ public class zabezpieczenia {
 	   public static void errorMessage(int check) {
 		   
 		   if(check == 1) {
-	        	 JOptionPane.showMessageDialog(null, "Puste pola pacjenta");
+	        	 JOptionPane.showMessageDialog(null, "Puste pola pacjenta", "Warning", JOptionPane.WARNING_MESSAGE);
 	        }
 	        if(check == 2) {
-	        	JOptionPane.showMessageDialog(null, "Imie lub nazwisko zawiera cyfry");
+	        	JOptionPane.showMessageDialog(null, "Imie lub nazwisko zawiera cyfry", "Warning", JOptionPane.WARNING_MESSAGE);
 	        }
 	        if(check == 3) {
 	        	
-	     	   JOptionPane.showMessageDialog(null, "Z³y format numeru Pesel");
+	     	   JOptionPane.showMessageDialog(null, "Z³y format numeru Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 	        }
 	        
 	       if(check == 4) {
-	    	   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym numerem Pesel");
+	    	   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym numerem Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 	       }
 	       if(check == 6) {
-	    	   JOptionPane.showMessageDialog(null, "B³êdna 10 cyfra numeru Pesel");
+	    	   JOptionPane.showMessageDialog(null, "B³êdna 10 cyfra numeru Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 	       }
 	       if(check == 7) {
-	    	   JOptionPane.showMessageDialog(null, "Pusty wybór ubezpieczenia");
+	    	   JOptionPane.showMessageDialog(null, "Pusty wybór ubezpieczenia", "Warning", JOptionPane.WARNING_MESSAGE);
 	       }
 	   }
 	  

@@ -133,10 +133,6 @@ public class Presenter {
 
 	   public int edycjaPacjanta(String imie, String nazwisko, String pesel, boolean plec, String ubezpieczenie, JTable Tabela) {
 		   int check = zabezpieczenia.sprawdzPacjenta(imie, nazwisko, pesel, Tabela, plec);
-
-		   if(check == 4) {
-			   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym samym numer pesel", "Warning", JOptionPane.WARNING_MESSAGE);
-		   }
 		   if(check == 0 || check == 5) {
 			   
 			   Pacjent pacjent = new Pacjent(imie, nazwisko, pesel,plec ,ubezpieczenie);			   
