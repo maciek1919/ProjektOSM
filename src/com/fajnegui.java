@@ -175,7 +175,7 @@ public class fajnegui implements Runnable, ActionListener {
         lData.setBounds(20, 45, 100, 20);
         leftBottom.add(lData);
         
-        lleukocytow = new JLabel("Liczba leukocyt闚w: ");
+        lleukocytow = new JLabel("Liczba leukocyt闚: ");
         lleukocytow.setBounds(20, 90, 150, 20);
         leftBottom.add(lleukocytow);
         
@@ -238,7 +238,7 @@ public class fajnegui implements Runnable, ActionListener {
 		leftBottom.add(datePicker);
 		
 		
-				TFerytrocytow.getDocument().addDocumentListener(new DocumentListener() {
+		TFerytrocytow.getDocument().addDocumentListener(new DocumentListener() {
 				
 				
 				@Override
@@ -255,23 +255,6 @@ public class fajnegui implements Runnable, ActionListener {
 	            public void changedUpdate(DocumentEvent e) {
 	            	sprawdzenie(TFleukocytow.getText(), TFneutrofili.getText(), TFerytrocytow.getText());
 	            }
-	            
-				
-				private void sprawdzenie(String lleukocytow, String lneutrofili, String lerytrocytow) {
-					
-					if(!StringUtils.isEmpty(lleukocytow) && !StringUtils.isEmpty(lneutrofili) && !StringUtils.isEmpty(lerytrocytow)) {
-						if(TFleukocytow.getText().matches("[0-9]+") && TFneutrofili.getText().matches("[0-9]+") && TFerytrocytow.getText().matches("[0-9]+") ) {
-							boolean wynik = presenter.isPozytywny(Integer.parseInt(lleukocytow), Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow));
-							if(!wynik) {
-								lwynik1.setText("Negatywny");
-							}
-							else {lwynik1.setText("Pozytywny");}				
-						}
-						else {lwynik1.setText("Z造 format badania");}
-
-					}
-					else {lwynik1.setText("Brak danych");}
-				}
 				
 				
 				
@@ -294,24 +277,7 @@ public class fajnegui implements Runnable, ActionListener {
 		            public void changedUpdate(DocumentEvent e) {
 		            	sprawdzenie(TFleukocytow.getText(), TFneutrofili.getText(), TFerytrocytow.getText());
 		            }
-		            
-					
-					private void sprawdzenie(String lleukocytow, String lneutrofili, String lerytrocytow) {
-						
-						if(!StringUtils.isEmpty(lleukocytow) && !StringUtils.isEmpty(lneutrofili) && !StringUtils.isEmpty(lerytrocytow)) {
-							if(TFleukocytow.getText().matches("[0-9]+") && TFneutrofili.getText().matches("[0-9]+") && TFerytrocytow.getText().matches("[0-9]+") ) {
-								boolean wynik = presenter.isPozytywny(Integer.parseInt(lleukocytow), Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow));
-								if(!wynik) {
-									lwynik1.setText("Negatywny");
-								}
-								else {lwynik1.setText("Pozytywny");}				
-							}
-							else {lwynik1.setText("Z造 format badania");}
-
-						}
-						else {lwynik1.setText("Brak danych");}
-					}
-					
+		           
 					
 					
 				});
@@ -333,25 +299,6 @@ public class fajnegui implements Runnable, ActionListener {
 		            public void changedUpdate(DocumentEvent e) {
 		            	sprawdzenie(TFleukocytow.getText(), TFneutrofili.getText(), TFerytrocytow.getText());
 		            }
-		            
-					
-					private void sprawdzenie(String lleukocytow, String lneutrofili, String lerytrocytow) {
-						
-						if(!StringUtils.isEmpty(lleukocytow) && !StringUtils.isEmpty(lneutrofili) && !StringUtils.isEmpty(lerytrocytow)) {
-							if(TFleukocytow.getText().matches("[0-9]+") && TFneutrofili.getText().matches("[0-9]+") && TFerytrocytow.getText().matches("[0-9]+") ) {
-								boolean wynik = presenter.isPozytywny(Integer.parseInt(lleukocytow), Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow));
-								if(!wynik) {
-									lwynik1.setText("Negatywny");
-								}
-								else {lwynik1.setText("Pozytywny");}				
-							}
-							else {lwynik1.setText("Z造 format badania");}
-
-						}
-						else {lwynik1.setText("Brak danych");}
-					}
-					
-					
 					
 				});
 				
@@ -514,6 +461,21 @@ public class fajnegui implements Runnable, ActionListener {
         	}
         	
         
+        	private void sprawdzenie(String lleukocytow, String lneutrofili, String lerytrocytow) {
+				
+				if(!StringUtils.isEmpty(lleukocytow) && !StringUtils.isEmpty(lneutrofili) && !StringUtils.isEmpty(lerytrocytow)) {
+					if(TFleukocytow.getText().matches("[0-9]+") && TFneutrofili.getText().matches("[0-9]+") && TFerytrocytow.getText().matches("[0-9]+") ) {
+						boolean wynik = presenter.isPozytywny(Integer.parseInt(lleukocytow), Integer.parseInt(lneutrofili), Integer.parseInt(lerytrocytow));
+						if(!wynik) {
+							lwynik1.setText("Negatywny");
+						}
+						else {lwynik1.setText("Pozytywny");}				
+					}
+					else {lwynik1.setText("Z造 format badania");}
+
+				}
+				else {lwynik1.setText("Brak danych");}
+			}
         	
 	@Override
 	public void actionPerformed(ActionEvent e) {
