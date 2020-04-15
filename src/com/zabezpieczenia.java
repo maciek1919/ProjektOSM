@@ -26,7 +26,7 @@ public class zabezpieczenia {
 		}
 		
 		if(!lleukocytow.matches("[0-9]+") || !lneutrofili.matches("[0-9]+") || !lerytrocytow.matches("[0-9]+")) {
-			JOptionPane.showMessageDialog(null, "Zly format wyników badañ", "Warning", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Zly format wynikï¿½w badaï¿½", "Warning", JOptionPane.WARNING_MESSAGE);
 			return 2;
 		}
 		
@@ -60,7 +60,7 @@ public class zabezpieczenia {
 		
 		   
 		   int i = 0;
-		   for (Pacjent pacjentVectorList1 : Presenter.pacjentVectorList) { //pêtla foreach
+		   for (Pacjent pacjentVectorList1 : Presenter.pacjentVectorList) { //pï¿½tla foreach
 			   if(pacjentVectorList1.getPesel().equals(pesel)) {
 				  
 				   return checkingPeselUniqueness(Tabela, i);
@@ -108,17 +108,17 @@ public class zabezpieczenia {
 	        }
 	        if(check == 3) {
 	        	
-	     	   JOptionPane.showMessageDialog(null, "Z³y format numeru Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
+	     	   JOptionPane.showMessageDialog(null, "ZÅ‚y format numeru Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 	        }
 	        
 	       if(check == 4) {
 	    	   JOptionPane.showMessageDialog(null, "Istnieje pacjent z tym numerem Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 	       }
 	       if(check == 6) {
-	    	   JOptionPane.showMessageDialog(null, "B³êdna 10 cyfra numeru Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
+	    	   JOptionPane.showMessageDialog(null, "BÅ‚Ä™dna 10 cyfra numeru Pesel", "Warning", JOptionPane.WARNING_MESSAGE);
 	       }
 	       if(check == 7) {
-	    	   JOptionPane.showMessageDialog(null, "Pusty wybór ubezpieczenia", "Warning", JOptionPane.WARNING_MESSAGE);
+	    	   JOptionPane.showMessageDialog(null, "Pusty wybÃ³r ubezpieczenia", "Warning", JOptionPane.WARNING_MESSAGE);
 	       }
 	   }
 	  

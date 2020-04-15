@@ -17,7 +17,7 @@ import java.util.Date;
 public class Presenter {
 	
 	  public static Vector<Pacjent> pacjentVectorList = new Vector<>();
-	  static String[] columnNames = {"Imiê i Nazwisko", "P³eæ", "PESEL", "Ubezpieczenie", "Badanie"};
+	  static String[] columnNames = {"ImiÄ™ i Nazwisko", "PÅ‚eÄ‡", "PESEL", "Ubezpieczenie", "Badanie"};
 	
 	  public static void clearTextFields(JPanel panel){
 	       Component[] components = panel.getComponents();

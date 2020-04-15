@@ -102,7 +102,7 @@ public class fajnegui implements Runnable, ActionListener {
 		
         leftTop.setLayout(null);
 		
-		lImie = new JLabel("Imiê");
+		lImie = new JLabel("ImiÄ™");
 		lImie.setBounds(20,60,100,20);
 		leftTop.add(lImie);
 		
@@ -118,14 +118,14 @@ public class fajnegui implements Runnable, ActionListener {
 		lPesel.setBounds(20, 120, 100, 20);
 		leftTop.add(lPesel);
 		
-		lPlec = new JLabel("P³eæ");
+		lPlec = new JLabel("PÅ‚eÄ‡");
 		lPlec.setBounds(20,150,100,20);
 		leftTop.add(lPlec);
 		
 		radioPanel = new ButtonGroup();	
 		
 		RF = new JRadioButton("Kobieta", false);
-		RM = new JRadioButton("Mê¿czyzna", false);
+		RM = new JRadioButton("MÄ™czyzna", false);
 		RF.setBounds(150, 150, 90, 20);
 		RM.setBounds(250, 150, 90, 20);
 		radioPanel.add(RF);
@@ -175,7 +175,7 @@ public class fajnegui implements Runnable, ActionListener {
         lData.setBounds(20, 45, 100, 20);
         leftBottom.add(lData);
         
-        lleukocytow = new JLabel("Liczba leukocytów: ");
+        lleukocytow = new JLabel("Liczba leukocytÃ³w: ");
         lleukocytow.setBounds(20, 90, 150, 20);
         leftBottom.add(lleukocytow);
         
@@ -183,7 +183,7 @@ public class fajnegui implements Runnable, ActionListener {
         lneutrofili.setBounds(20, 120, 150, 20);
         leftBottom.add(lneutrofili);
         
-        lerytrocytow = new JLabel("Liczba erytrocytów:");
+        lerytrocytow = new JLabel("Liczba erytrocytÃ³w:");
         lerytrocytow.setBounds(20, 150, 150, 20);
         leftBottom.add(lerytrocytow);
         
@@ -377,7 +377,7 @@ public class fajnegui implements Runnable, ActionListener {
 			BZapisz1.setText("Zapisz");
 		});
 		
-		BUsun = new JButton("Usuñ");
+		BUsun = new JButton("UsuÅ„");
 		przyciskPanel.add(BDodaj);
 		przyciskPanel.add(BUsun);
 		przyciskPanel.setPreferredSize(new Dimension(20,20));
@@ -471,7 +471,7 @@ public class fajnegui implements Runnable, ActionListener {
 						}
 						else {lwynik1.setText("Pozytywny");}				
 					}
-					else {lwynik1.setText("Z³y format badania");}
+					else {lwynik1.setText("Zï¿½y format badania");}
 
 				}
 				else {lwynik1.setText("Brak danych");}
