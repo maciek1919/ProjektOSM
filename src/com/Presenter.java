@@ -120,14 +120,15 @@ public class Presenter {
 	   }
 	   
 	public static boolean isPozytywny(int lleukocytow, int lerytrocytow, int lneutrofili) {
-		boolean pozytywny = false;
-		
+				
 		if(lleukocytow > 100 && lerytrocytow > 100 && lneutrofili < 100) {
-			pozytywny = true;
-			
+			boolean pozytywny = true;
+			return pozytywny;
 		}
+		else {
+			boolean pozytywny =false;
+			return pozytywny;}
 		
-		return pozytywny;
 		
 	}
 
